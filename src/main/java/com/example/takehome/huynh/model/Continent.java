@@ -3,13 +3,18 @@ package com.example.takehome.huynh.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
 /**
  * @author huynh
  *
  */
+@JsonInclude(Include.NON_EMPTY)
 public class Continent {
 
 	private List<String> countries;
+	
 	private String code;
 	private String name;
 	private List<String> otherCountries;

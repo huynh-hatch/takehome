@@ -23,7 +23,13 @@ build
 5. To run the application, open CMD and type:  
 java -jar takehome-0.0.1-SNAPSHOT.jar
 
-### Test with browser
+### REST
+**Sample Request:**  
+**URL:** http://localhost:8080/continents?codes=US,CA,JP  
+**Method:** GET  
+
+### Graphql
+##### Test with browser
 1. For testing, open the browser and navigate to http://localhost:8080/graphiql
 2. For production, this should be disabled.
 
@@ -36,7 +42,7 @@ java -jar takehome-0.0.1-SNAPSHOT.jar
 		  }
 		}
 
-### Testing with REST
+##### Testing with REST
 **Sample Request:**  
 **URL:** http://localhost:8080/graphql  
 **Method:** POST  
