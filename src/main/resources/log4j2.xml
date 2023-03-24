@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration
+	xmlns="http://logging.apache.org/log4j/2.0/config">
+
+	<Properties>
+		<Property name="LOG_LOC">logs</Property>
+		<Property name="MAX">5</Property>
+		<Property name="LOG_PATTERN">%d{yyMMdd-HHmmss}|%-5p|[%-10t]|%-20c{0}|%m%n
+		</Property>
+	</Properties>
+
+	<Appenders>
+		<RollingFile name="FILE" fileName="${LOG_LOC}/main.log"
+			filePattern="${LOG_LOC}/main.%i.log">
+			<PatternLayout>
+				<Pattern>${LOG_PATTERN}</Pattern>
+			</PatternLayout>
+
+			<Policies>
+				<OnStartupTriggeringPolicy />
+			</Policies>
+
+			<DefaultRolloverStrategy max="${MAX}" />
+		</RollingFile>
+
+		<Console name="STDOUT" target="SYSTEM_OUT">
+			<PatternLayout pattern="${LOG_PATTERN}" />
+		</Console>
+	</Appenders>
+
+	<Loggers>
+		<Logger name="org.springframework" level="INFO" additivity="true">
+			<AppenderRef ref="FILE" />
+		</Logger>
+
+		<Logger name="com.example" level="WARN"	additivity="true">
+			<AppenderRef ref="FILE" />
+		</Logger>
+		<Root level="WARN" additivity="true">
+			<AppenderRef ref="STDOUT" />
+			<AppenderRef ref="FILE" />
+
+		</Root>
+	</Loggers>
+
+</Configuration>

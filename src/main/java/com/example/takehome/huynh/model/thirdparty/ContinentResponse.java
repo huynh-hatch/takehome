@@ -7,7 +7,7 @@ import com.example.takehome.huynh.model.Country;
 /**
  * @author huynh
  *
- * Third party model
+ * Third party model which contains the countries, code, and name.
  */
 public class ContinentResponse {
 

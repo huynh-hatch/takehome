@@ -8,9 +8,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.example.takehome.huynh.model.Continent;
 import com.example.takehome.huynh.model.Country;
 import com.example.takehome.huynh.model.thirdparty.ContinentResponse;
@@ -18,15 +15,16 @@ import com.example.takehome.huynh.service.ContinentService;
 import com.example.takehome.huynh.service.CountryService;
 import com.example.takehome.huynh.utils.AppUtils;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * @author huynh
  * 
- *         Handles the requst
+ *         Handles the request for querying of continents by country code
  *
  */
+@Slf4j
 public class ContinentRequestHandler {
-
-	private static final Logger log = LoggerFactory.getLogger(ContinentRequestHandler.class);
 
 	/**
 	 * Gets Continentes by country codes
@@ -71,7 +69,8 @@ public class ContinentRequestHandler {
 						continent = new Continent();
 						// populate continent with web data
 						continent.setName(continentQuery.getName());
-						continent.setOtherCountries(continentQuery.getCountries().stream().map(Country::getCode).collect(Collectors.toList()));
+						continent.setOtherCountries(continentQuery.getCountries().stream().map(Country::getCode)
+								.collect(Collectors.toList()));
 
 						// puts into local map
 						continentsMap.put(country.getContinent().getCode(), continent);
@@ -81,7 +80,8 @@ public class ContinentRequestHandler {
 
 				continent.getCountries().add(countryCode);
 				// Filters country;
-				continent.setOtherCountries(continent.getOtherCountries().stream().filter(c -> !c.equals(countryCode)).collect(Collectors.toList()));
+				continent.setOtherCountries(continent.getOtherCountries().stream().filter(c -> !c.equals(countryCode))
+						.collect(Collectors.toList()));
 			}
 
 		}

@@ -3,19 +3,18 @@ package com.example.takehome.huynh.ratelimiter;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.example.takehome.huynh.ratelimiter.model.RateLimiterInfo;
+
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author huynh
  *
- *         Very basic singleton rate limiter which checks the user's number of requests against the allowed TPS
+ *         Very basic singleton rate limiter which checks the user's number of
+ *         requests against the allowed TPS
  */
+@Slf4j
 public class RateLimter {
-
-	private static final Logger log = LoggerFactory.getLogger(RateLimter.class);
 
 	private static Map<String, RateLimiterInfo> USER_TRACKER;
 	private static long PREV_TIMESTAMP;
@@ -37,7 +36,8 @@ public class RateLimter {
 	 */
 	public boolean isBelowLimit(String user, int allowTps) {
 
-		// If the difference between the previous execution time and current time is more than 1 sec, then clear the data store
+		// If the difference between the previous execution time and current time is
+		// more than 1 sec, then clear the data store
 		if (System.currentTimeMillis() - PREV_TIMESTAMP > 1000L) {
 			USER_TRACKER.clear();
 		}

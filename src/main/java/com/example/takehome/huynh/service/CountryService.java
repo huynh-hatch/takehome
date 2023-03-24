@@ -3,19 +3,26 @@ package com.example.takehome.huynh.service;
 import java.io.IOException;
 import java.net.URISyntaxException;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.example.takehome.huynh.cache.impl.CountryCache;
 import com.example.takehome.huynh.client.GraphqlClient;
 import com.example.takehome.huynh.model.Country;
 
+import lombok.extern.slf4j.Slf4j;
+
+/**
+ * @author huynh
+ * 
+ *         A service to get the Country information by Country Code.
+ *
+ */
+@Slf4j
 public class CountryService {
 
-	private static final Logger log = LoggerFactory.getLogger(CountryService.class);
 
 	/**
-	 * Service to get Country from country code
+	 * Service to get Country from country code.
+	 * 
+	 * First, check if the information is in the local cache. If not, invoke web service call.
 	 * 
 	 * @param code
 	 * @return

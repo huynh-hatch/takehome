@@ -2,11 +2,11 @@
 
 #### Assumptions
 1. This application will do a simple authorization check but no authentication check.  In the real world, the X-Authorization request header will be the actual JWT token which the user received after authentication.
-	- the authorization check is a simple check for a request header: X-Authorization
-2. This application will do an external web service lookup from the URL below, therefore, the assumption is that the external web service is working
+	- the authorization checks whether the following request header exists in the request: X-Authorization
+2. This application will do an external web service lookup from the URL below to obtain the Country and Continent info; therefore, the assumption is that the external web service is functioning
 	- https://countries.trevorblades.com/graphql
 3. Rate limit is based on the Username provided in the X-Authorization request header
-	- If the X-Authorization request header does not exists, then the IP address will be used.
+	- If the X-Authorization request header does not exists, then the IP address will be used as the rate limiter
 
 #### Instructions
 1. Clone this project.

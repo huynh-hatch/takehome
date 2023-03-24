@@ -1,15 +1,18 @@
 package com.example.takehome.huynh.ratelimiter.model;
 
-import java.time.Instant;
-
+/**
+ * @author huynh
+ *
+ * Keeps track of user and number of txns invoked by the user
+ */
 public class RateLimiterInfo {
 
 	private String user;
-	private long timeStamp;
+//	private long timeStamp;
 	private int numOfTxns;
 
 	public RateLimiterInfo() {
-		this.timeStamp = Instant.now().getEpochSecond();
+//		this.timeStamp = Instant.now().getEpochSecond();
 		this.numOfTxns = 0;
 	}
 
@@ -20,7 +23,7 @@ public class RateLimiterInfo {
 
 	public int getTPS() {
 		++numOfTxns;
-		
+
 //		long currentTime = Instant.now().getEpochSecond();
 //		double deltaTime = (currentTime - timeStamp);
 //
@@ -38,13 +41,13 @@ public class RateLimiterInfo {
 		this.user = user;
 	}
 
-	public long getTimeStamp() {
-		return timeStamp;
-	}
-
-	public void setTimeStamp(long timeStamp) {
-		this.timeStamp = timeStamp;
-	}
+//	public long getTimeStamp() {
+//		return timeStamp;
+//	}
+//
+//	public void setTimeStamp(long timeStamp) {
+//		this.timeStamp = timeStamp;
+//	}
 
 	public int getNumOfTxns() {
 		return numOfTxns;
